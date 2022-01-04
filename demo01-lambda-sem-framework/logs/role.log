@@ -1,0 +1,42 @@
+{
+    "Role": {
+        "Arn": "arn:aws:iam::231968220883:role/lambda-exemplo",
+        "RoleName": "lambda-exemplo",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Action": "sts:AssumeRole",
+                    "Principal": {
+                        "Service": "lambda.amazonaws.com"
+                    },
+                    "Effect": "Allow"
+                }
+            ]
+        },
+        "Path": "/",
+        "CreateDate": "2021-12-30T20:37:45Z",
+        "RoleId": "AROATMATCE3J4UNVKQ27F"
+    }
+},
+{
+    "Role": {
+        "RoleId": "AROATMATCE3J35DUVZYPJ",
+        "RoleName": "lambda-exemplo1",
+        "CreateDate": "2021-12-30T20:51:56Z",
+        "AssumeRolePolicyDocument": {
+            "Statement": [
+                {
+                    "Action": "sts:AssumeRole",
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "lambda.amazonaws.com"
+                    }
+                }
+            ],
+            "Version": "2012-10-17"
+        },
+        "Path": "/",
+        "Arn": "arn:aws:iam::231968220883:role/lambda-exemplo1"
+    }
+}

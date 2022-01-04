@@ -1,0 +1,17 @@
+org: rasec23rj
+app: hello-sls2
+service: hello-sls2
+frameworkVersion: "2 || 3"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: "20201221"
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /hello
+          method: get

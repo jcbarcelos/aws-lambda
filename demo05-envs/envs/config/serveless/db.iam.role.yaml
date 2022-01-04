@@ -1,0 +1,6 @@
+- Effect: Allow
+  Action:
+    - dynamodb:GetItem
+    - dynamodb:UpdateItem
+    - dynamodb:PutItem
+  Resource: "arn:aws:dynamodb:${self:provider.region,'us-east-1'}:*:table/${self:custom.tableName,'CommitMessages-qa'}"

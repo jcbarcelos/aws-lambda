@@ -1,0 +1,40 @@
+{
+  "Records": [
+    {
+      "eventID": "21780b84858d8f2a7e93af562ef7a7ca",
+      "eventName": "INSERT",
+      "eventVersion": "1.1",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "us-east-1",
+      "dynamodb": {
+        "ApproximateCreationDateTime": 1641222682,
+        "Keys": {
+          "nome": {
+            "S": "spiderman"
+          },
+          "id": {
+            "S": "69753530-6ca7-11ec-8e98-77422ef2df06"
+          }
+        },
+        "NewImage": {
+          "createdAt": {
+            "S": "2022-01-03T15:11:22.627Z"
+          },
+          "nome": {
+            "S": "spiderman"
+          },
+          "id": {
+            "S": "69753530-6ca7-11ec-8e98-77422ef2df06"
+          },
+          "poder": {
+            "S": "spider"
+          }
+        },
+        "SequenceNumber": "8890900000000025030899908",
+        "SizeBytes": 146,
+        "StreamViewType": "NEW_AND_OLD_IMAGES"
+      },
+      "eventSourceARN": "arn:aws:dynamodb:us-east-1:231968220883:table/heroes/stream/2022-01-03T14:44:27.493"
+    }
+  ]
+}
