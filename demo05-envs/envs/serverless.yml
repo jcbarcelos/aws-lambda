@@ -9,17 +9,40 @@ provider:
   lambdaHashingVersion: "20201221"
   stage: ${opt:stage, "qa"}
   environment: ${file(./config/env.${self:provider.stage}.json)}
-  iamRoleStatements: ${file(./config/serveless/db.iam.role.yaml)}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:UpdateItem
+        - dynamodb:PutItem
+      Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.tableName}"
 
 custom:
   schedulerRate: rate(1 minute)
-  enable: true
+  enabled: true
   tableName: ${self:provider.environment.DbTableName}
   dbWriteCapacityUnits: ${self:provider.environment.DbWriteCapacityUnits}
   dbReadCapacityUnits: ${self:provider.environment.DbReadCapacityUnits}
 
 resources:
-  Resources: ${file(./config/serveless/resources/dynamodb.hero.table.yaml)}
+  Resources:
+    Table:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.tableName}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: commitMessage
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: commitMessage
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
 
 functions:
   commit-message-scheduler:
@@ -28,5 +51,5 @@ functions:
       - schedule:
           rate: ${self:custom.schedulerRate}
           name: schedule-commit-message-${self:provider.stage}
-          description: commit messages each minute
-          enabled: ${self:custom.enable}
+          description: get commit messages each minute
+          enabled: true

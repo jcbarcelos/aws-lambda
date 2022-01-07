@@ -12,9 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1049.0",
-    "axios": "^0.24.0",
-    "cheerio": "^1.0.0-rc.10",
-    "env-var": "^7.1.1"
+    "aws-sdk": "^2.648.0",
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "env-var": "^6.0.4"
   }
 }
